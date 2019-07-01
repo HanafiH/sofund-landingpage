@@ -1,13 +1,24 @@
 $(document).ready(function(){
     $('.sidenav').sidenav();
-    
-    // console.log($('social').offset().top);
+
 
     $('.carousel.carousel-slider').carousel({
         fullWidth: true,
-        indicators: true,
+        // indicators: true,
         dist: 0
-      });
+    });
+     var autoplay = true;
+    setInterval(function() { 
+        if(autoplay) $('.carousel.carousel-slider').carousel('next'); 
+    }, 4500);
+
+    $('.carousel.carousel-slider').hover(function(){
+        autoplay = false; 
+    },function(){ autoplay = true; 
+    
+    });
+
+    $('.sidenav').sidenav();
   
   });
 
@@ -29,27 +40,13 @@ $(document).ready(function(){
 	const wr = $(this).scrollTop();
     const nav = document.querySelector('nav');
     
-    // console.log(wr);
-    // if (wr>100){
-    //     nav.classList.add('orange');
-    // }else{
-    //     nav.classList.remove('orange');
-    // }
 
-    if (wr>$('#social').offset().top) {
-        nav.classList.add('orange');
+    if (wr>$('#sosial').offset().top) {
+        nav.classList.add('white');
+        nav.classList.remove('z-depth-0');
     }else{
-        nav.classList.remove('orange');
+        nav.classList.remove('white');
+        nav.classList.add('z-depth-0');
     }
     
 });
-//   $(document).scroll(function(){
-//     const wr = $(this).scrollTop();
-//     if (wr < $('.car').offset().top - 100) {
-		
-// 		nav.classList.remove('animate');	
-// 	}else{
-// 		nav.classList.add('animate');
-// 	}
-
-//   });
